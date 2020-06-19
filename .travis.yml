@@ -104,7 +104,7 @@ env:
       CIBW_BUILD='cp*-macosx_x86_64 cp*-manylinux_x86_64 cp*-win_amd64'
       CIBW_BUILD_VERBOSITY='1'
       CIBW_ENVIRONMENT='QULACS_OPT_FLAGS="-mtune=haswell -mfpmath=both"'
-      CIBW_REPAIR_WHEEL_COMMAND_MACOS='delocate-listdeps {wheel} && delocate-wheel -v --require-archs x86_64 -w {dest_dir} {wheel}'
+      CIBW_REPAIR_WHEEL_COMMAND_MACOS='delocate-listdeps {wheel} && script/fix_wheel_osx.sh {wheel} {dest_dir} && delocate-listdeps {wheel}'
       TWINE_USERNAME=__token__
 
 stages:
