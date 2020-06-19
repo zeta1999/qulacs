@@ -86,10 +86,10 @@ _wheel_build: &wheel_build
   - python -m cibuildwheel --output-dir wheels
 
 _wheel_upload: &wheel_upload
-  - if [[ $TRAVIS_TAG ]]; then python -m twine upload wheels/*.whl; fi
+  - python -m twine upload --repository testpypi wheels/*.whl
 
 _sdist_upload: &sdist_upload
-  - if [[ $TRAVIS_TAG ]]; then python -m twine upload dist/*; fi
+  - python -m twine upload --repository testpypi dist/*
 
 language: cpp
 
